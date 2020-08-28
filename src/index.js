@@ -24,4 +24,4 @@ localStorageAPI.getInitialState().then(response =>{
     </Provider>,
     document.getElementById('root')
   );
-})
+});
