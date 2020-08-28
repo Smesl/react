@@ -2,7 +2,7 @@
   "name": "react-js",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://smesl.github.io/react-app",
+  "homepage": "https://smesl.github.io/react",
   "dependencies": {
     "gh-pages": "^3.1.0",
     "react": "^16.13.1",

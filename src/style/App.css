@@ -9,6 +9,7 @@ textarea{
     resize: none;
     font-size: 17px;
     width: 332px;
+    box-shadow: none;
 }
 
 .comment{
