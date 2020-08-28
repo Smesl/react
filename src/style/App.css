@@ -1,0 +1,64 @@
+.position {
+    text-align: center;
+}
+
+textarea{
+    margin-top: 10px;
+    width: 250px;
+    height: 70px;
+    resize: none;
+    font-size: 17px;
+    width: 332px;
+}
+
+.comment{
+    border: 1px solid silver;
+    width: 400px;
+    margin: 15px auto;
+    height: auto;
+    overflow-wrap: break-word;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.date{
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.comment_name_p {
+    display: inline-block;
+     padding-left: 7px;
+}
+
+.comment_margin{
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.delete{
+    background: silver;
+    border: 1px solid black;
+    color: red;
+    outline: none;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+input {
+    font-size: 17px;
+    box-shadow: none;
+}
+
+form button {
+    font-size: 17px;
+}
