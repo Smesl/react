@@ -1,6 +1,4 @@
-.position {
-    text-align: center;
-}
+
 
 textarea{
     margin-top: 10px;
@@ -14,8 +12,8 @@ textarea{
 
 .comment{
     border: 1px solid silver;
-    width: 400px;
-    margin: 15px auto;
+    min-width: 300px;
+    margin:  auto 15px ;
     height: auto;
     overflow-wrap: break-word;
 }
@@ -40,6 +38,7 @@ p {
 }
 
 .delete{
+    margin-left: 10px;
     background: silver;
     border: 1px solid black;
     color: red;

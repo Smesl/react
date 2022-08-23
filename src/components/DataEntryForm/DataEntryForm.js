@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {addComment} from '../../action'
 
 import '../../style/App.css'
+import Header from '../Header/Header';
 
 class DataEntryForm extends Component {   
     state = {
@@ -35,16 +36,17 @@ class DataEntryForm extends Component {
         const {name, comment} = this.state;
         const {inputChangeHandler, formSubmitHandler} = this;
         return (
-        <div className='position'>
-            <h1>Список комментариев</h1>
-            <form onSubmit={formSubmitHandler} >
-                <input onChange={inputChangeHandler} type='text' name='name' placeholder='Введите ваше имя' value={name} required></input>
-                <div>
-                    <textarea onChange={inputChangeHandler} name='comment' placeholder='Введите ваш комментарий' value={comment} required></textarea>
+                <div className='text-center'>
+                        <form className="form-inline" onSubmit={formSubmitHandler} >
+                        <div className="form-group mx-sm-3 mb-2">
+                            <input className='' onChange={inputChangeHandler} type='text' name='name' placeholder='Введите ваше имя' value={name} required></input>
+                            <div>
+                                <textarea onChange={inputChangeHandler} name='comment' placeholder='Введите ваш комментарий' value={comment} required></textarea>
+                            </div>
+                            <button type='submit'>Добавить комментарий</button>
+                            </div>
+                        </form>
                 </div>
-                <button type='submit'>Добавить комментарий</button>
-            </form>
-        </div>
         )
     }
 }

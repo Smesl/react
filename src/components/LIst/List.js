@@ -7,9 +7,11 @@ const List = ({stateComments, deleteComment}) =>{
         <ListItem deleteComment={deleteComment} commentElements={commentElements} key={commentElements.id}/>
      )
     return(
-            <ul>
+        <div className='d-flex'>
+            <ul className='d-inline-flex flex-wrap'>
                 {listItems}
             </ul> 
+        </div>
     )
 }
 

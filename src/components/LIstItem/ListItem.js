@@ -3,8 +3,8 @@ import React from 'react';
 const ListItem = (props) =>{
     const {deleteComment, commentElements: {comment, name, id, date}} = props;
             return(
-                <li className='comment'>
-                    <div>
+                <li className='comment mb-3'>
+                    <div className='m-2'>
                         <button className='delete' onClick={() => deleteComment(id)}>Delete</button>
                         <span className='date'>{date}</span>
                     </div>
