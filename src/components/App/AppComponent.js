@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Route , Redirect, Routes, Switch } from "react-router-dom" 
+import {BrowserRouter, Route , Redirect, Routes, Switch } from "react-router-dom" 
 
 import DataEntryForm from '../DataEntryForm/DataEntryForm'
 import ListComment from '../../containers/LIstContainer/ListComment'
@@ -10,17 +10,18 @@ import Header from "../Header/Header";
 class App extends Component  {
   render() {
     return (
-        // <React.Fragment>
-         <div className="container"> 
-            {/* <Routes> */}
-              <Route path='/' component={Header}  /> 
-              
-                <Route path="/" render={ (props) => <ListComment photos={props} />} />
-                <Route  path='/' component={DataEntryForm}  /> 
-            
-            {/* </Routes> */}
-           </div> 
-        // </React.Fragment>
+        <>
+          <Header/>
+          <div className="container mt-3"> 
+            <BrowserRouter>
+                {/* <Switch> */}
+                    {/* <Route path='/' component={Header}  />  */}
+                    <Route path='/' component={DataEntryForm}  /> 
+                    <Route path="/:id" render={ (props) => <ListComment photos={props} />} />
+                {/* </Switch> */}
+            </BrowserRouter>
+          </div> 
+        </>
       );
   }
 }
