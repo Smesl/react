@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {addComment} from '../../action'
 
 import '../../style/App.css'
-import Header from '../Header/Header';
 
 class DataEntryForm extends Component {   
     state = {
