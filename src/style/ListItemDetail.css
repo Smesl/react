@@ -1,0 +1,21 @@
+.goBack {
+    padding: 5px;
+    align-self: flex-start;
+    border: solid 1px silver;
+    cursor: pointer;
+}
+
+.edit {
+    padding: 5px;
+    align-self: flex-start;
+    border: solid 1px silver;
+    cursor: pointer;
+}
+
+.commentDetail {
+    border: 1px solid silver;
+    min-width: 400px;
+    margin:  auto 15px ;
+    height: auto;
+    overflow-wrap: break-word;
+}

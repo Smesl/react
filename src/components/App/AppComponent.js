@@ -19,6 +19,7 @@ class App extends Component  {
                     <Route exact path='/' component={DataEntryForm}  /> 
                     <Route exact path="/" render={ (props) => <ListComment {...props} />} />
                     <Route exact  path="/:id" render={ (props) => <ListItemDetailContainer {...props} />} />
+                    <Redirect to='/' />
                 {/* </Switch> */}
             </Router>
           </div> 
