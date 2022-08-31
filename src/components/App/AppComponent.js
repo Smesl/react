@@ -7,12 +7,17 @@ import ListComment from '../../containers/LIstContainer/ListComment'
 import '../../style/App.css';
 import Header from "../Header/Header";
 import ListItemDetailContainer from "../../containers/ListItemDetailContainer/ListItemDetailContainer";
+import Authorization from "../Authorization/Authorization";
 
 class App extends Component  {
   render() {
     return (
         <>
-          <Header/>
+          <div className="d-flex align-items-center justify-content-around bg-secondary">
+            <Header/>
+            <Authorization/>
+          </div>
+          
           <div className="container mt-3"> 
             <Router>
                 {/* <Switch> */}
