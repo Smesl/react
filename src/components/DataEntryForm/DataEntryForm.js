@@ -1,39 +1,54 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {connect} from 'react-redux'
 
 import {addComment} from '../../action'
 
 import '../../style/App.css'
 
-class DataEntryForm extends Component {   
-    state = {
-        name: '',
-        comment: '' 
+const DataEntryForm = (props) => {
+    const {addComment} = props
+
+    const [data, setData] = useState({name: '', comment: ''})
+
+
+    useEffect(() => {
+        validate()
+    }, [data])
+    
+    const validate = () => {
+        const errors = {}
+        // console.log(errors)
+        for(const fieldName in data) {
+            if(data[fieldName].trim() === ''){
+                console.log(errors)
+                errors[fieldName] =`${fieldName} обязательно для заполнения`
+                console.log(errors)
+            }
+        }
     }
     
-    inputChangeHandler = (e) => {
+    const inputChangeHandler = (e) => {
       const {name , value} = e.target;
-       this.setState({
-           [name]: value,
-       })
+      setData((prevState)=>({
+        ...prevState,
+            [name]: value
+      }))
     }
   
-    formSubmitHandler = (e) => {
+   const formSubmitHandler = (e) => {
        e.preventDefault();
-      const {name, comment} = this.state;
-      const {addComment} = this.props
+      const {name, comment} = data;
 
       addComment(name, comment, new Date().toLocaleString());
     
-      this.setState({
+      setData({
         name: '',
         comment: ''
       })
     }
     
-    render(){
-        const {name, comment} = this.state;
-        const {inputChangeHandler, formSubmitHandler} = this;
+        const {name, comment} = data;
+
         return (
                 <div className='text-center'>
                         <form className="form-inline" onSubmit={formSubmitHandler} >
@@ -47,7 +62,6 @@ class DataEntryForm extends Component {
                         </form>
                 </div>
         )
-    }
 }
 
 export default connect(null, {addComment})(DataEntryForm);

@@ -18,9 +18,9 @@ const ListItemDetail = (props) => {
 
   return (
     <>
-     {commentItem.length === Number(0) &&(
+     {/* {commentItem.length === Number(0) &&(
         <div className='d-flex justify-content-center'>Заметка удалена</div>
-     )}
+     )} */}
 
      {commentItem.length !==0 && (
         <div className='d-flex'>
