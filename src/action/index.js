@@ -1,5 +1,5 @@
 import getId from '../additionalАunctions/getId';
-import {ADD_COMMENT, DELETE_COMMENT} from './actionTypes'
+import {ADD_COMMENT, DELETE_COMMENT, TOGGLE_IS_COMMENT_EDIT_STATUS} from './actionTypes'
 
 export const addComment = (name, comment, date) => {
     return {
@@ -8,6 +8,12 @@ export const addComment = (name, comment, date) => {
         name,
         comment,
         date,
+    }
+}
+
+export const editComment = () => {
+    return {
+        type: TOGGLE_IS_COMMENT_EDIT_STATUS,
     }
 }
 

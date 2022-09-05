@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../style/ListItemDetail.css'
+import EditIcon from '@mui/icons-material/Edit';
 
 const ListItemDetail = (props) => {
   console.log(props)
@@ -18,13 +19,9 @@ const ListItemDetail = (props) => {
 
   return (
     <>
-     {/* {commentItem.length === Number(0) &&(
-        <div className='d-flex justify-content-center'>Заметка удалена</div>
-     )} */}
-
      {commentItem.length !==0 && (
         <div className='d-flex'>
-        <div className='goBack' onClick={handleGoBack}>Вернуться назад</div>
+        <button className='btn btn-primary goBack' onClick={handleGoBack}>Вернуться назад</button>
           <div className='commentDetail'>
             <div className='m-2'>
                 <button className='delete' onClick={() => {deleteComment(id); handleDelete()}}>Delete</button>
@@ -37,10 +34,10 @@ const ListItemDetail = (props) => {
                 <p>{comment}</p>
             </div> 
           </div> 
-          <div className='edit'>Редактировать</div>
+          <button className='btn btn-success edit'><EditIcon/></button>
         </div>
      )}
-    
+      
     </>
   )
 }

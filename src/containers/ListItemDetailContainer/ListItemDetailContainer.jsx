@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
 
-import {deleteComment} from '../../action/index'
+import {deleteComment, addComment} from '../../action/index'
 import ListItemDetail from '../../components/ListItemDetail/ListItemDetail';
 
 const ListItemDetailContainer = (props) => {
@@ -17,7 +17,7 @@ const ListItemDetailContainer = (props) => {
     
   return (
     <div className='d-flex justify-content-center'>
-      <ListItemDetail commentItem={commentItem} deleteComment={deleteComment} history={history} />
+      <ListItemDetail commentItem={commentItem} deleteComment={deleteComment} addComment={addComment} history={history} />
     </div>
   )
 }
@@ -33,7 +33,10 @@ const mapStateToProps = (state) => {
     return {
       deleteComment: (id) => {
             dispatch(deleteComment(id));
-        }
+        }, 
+      addComment: ()=> {
+        dispatch(addComment())
+      }
     }
 };
 
