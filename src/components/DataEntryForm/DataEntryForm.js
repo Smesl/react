@@ -9,23 +9,6 @@ const DataEntryForm = (props) => {
     const {addComment} = props
 
     const [data, setData] = useState({name: '', comment: ''})
-
-
-    useEffect(() => {
-        validate()
-    }, [data])
-    
-    const validate = () => {
-        const errors = {}
-        // console.log(errors)
-        for(const fieldName in data) {
-            if(data[fieldName].trim() === ''){
-                console.log(errors)
-                errors[fieldName] =`${fieldName} обязательно для заполнения`
-                console.log(errors)
-            }
-        }
-    }
     
     const inputChangeHandler = (e) => {
       const {name , value} = e.target;
