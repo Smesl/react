@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ListItem = (props) =>{
     const {deleteComment, commentElements: {comment, name, id, date}} = props;
-     console.log(props)
+    console.log(props)
             return(                
                     <li className='comment mb-3'>
                         <div className='m-2'>

@@ -1,22 +1,37 @@
-import {ADD_COMMENT, DELETE_COMMENT} from '../action/actionTypes'
+import {configureStore, combineReducers } from '@reduxjs/toolkit'
+import widgetCommentsReducer from './reducers/../widgetCommentsReducer';
+import { statusReducer } from './reducers/../statusCommentReducer';
+import { persistStore, persistReducer,  
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER, } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' 
 
-const widgetCommentsReducer = (state = [],  {id, name, comment, date, type}) => {
-    switch(type){
-        case ADD_COMMENT:
-            return [
-                   ...state,{
-                    id,
-                    name,
-                    comment,
-                    date
-                  },
-            ]
-        case DELETE_COMMENT:
-          return state.filter(comment => comment.id !== id);  
 
-          default:
-            return state;
-    }
+const rootReducer = combineReducers({
+    widget: widgetCommentsReducer,
+    status: statusReducer
+})
+
+const persistConfig = {
+  key: 'root',
+  storage,
 }
+ 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export default widgetCommentsReducer;
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+})
+
+export const persistor = persistStore(store)
+export default store

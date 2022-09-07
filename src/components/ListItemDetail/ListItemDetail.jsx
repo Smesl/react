@@ -4,7 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 const ListItemDetail = (props) => {
   console.log(props)
-    const {commentItem, deleteComment, history} = props
+    const {commentItem, deleteComment, editComment, history} = props
     console.log(commentItem.length)
     const {comment, date, id, name} = commentItem[0] ? commentItem[0] : 'undefined';
     console.log(comment, date, id, name)
@@ -34,7 +34,7 @@ const ListItemDetail = (props) => {
                 <p>{comment}</p>
             </div> 
           </div> 
-          <button className='btn btn-success edit'><EditIcon/></button>
+          <button className='btn btn-success edit' onClick={editComment}><EditIcon/></button>
         </div>
      )}
       

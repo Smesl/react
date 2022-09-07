@@ -5,9 +5,11 @@ import List from '../../components/LIst/List'
 import {deleteComment} from '../../action/index'
 import {LocalStorageAPI} from '../../localStorage/storageComments'
 
- const ListComment = ({stateComments, deleteComment}) =>{
-    const localStorageAPI = new LocalStorageAPI();
-    localStorageAPI.saveState(stateComments)
+ const ListComment = ({stateComments, editStatus, deleteComment}) =>{
+    console.log(stateComments)
+    // const localStorageAPI = new LocalStorageAPI();
+    // console.log(stateComments)
+    // localStorageAPI.saveState(stateComments)
      return(
          <List stateComments={stateComments} deleteComment={deleteComment} />
      )
@@ -15,7 +17,7 @@ import {LocalStorageAPI} from '../../localStorage/storageComments'
 
 function mapStateToProps(state) {
     return {
-        stateComments: state 
+        stateComments: state.widget
     }
   }
 

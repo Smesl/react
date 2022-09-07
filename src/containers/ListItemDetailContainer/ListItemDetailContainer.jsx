@@ -1,15 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { compose } from 'redux';
-import { withRouter } from 'react-router';
 
-import {deleteComment, addComment} from '../../action/index'
+import {deleteComment, addComment, editComment} from '../../action/index'
 import ListItemDetail from '../../components/ListItemDetail/ListItemDetail';
 
 const ListItemDetailContainer = (props) => {
     console.log(props)
-    const {dataComments, deleteComment, history} = props;
-    console.log(dataComments)
+    const {dataComments, editStatus,  deleteComment, history, editComment} = props;
+    console.log(dataComments, editStatus)
     const commentId = props.match.params.id;
     console.log(commentId)
     const commentItem = dataComments.filter(c => c.id === commentId);
@@ -17,7 +16,7 @@ const ListItemDetailContainer = (props) => {
     
   return (
     <div className='d-flex justify-content-center'>
-      <ListItemDetail commentItem={commentItem} deleteComment={deleteComment} addComment={addComment} history={history} />
+      <ListItemDetail editComment={editComment} commentItem={commentItem} deleteComment={deleteComment} addComment={addComment} history={history} />
     </div>
   )
 }
@@ -25,7 +24,8 @@ const ListItemDetailContainer = (props) => {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-       dataComments: state
+       dataComments: state.widget,
+       editStatus: state.status
     }
   };
 
@@ -36,6 +36,9 @@ const mapStateToProps = (state) => {
         }, 
       addComment: ()=> {
         dispatch(addComment())
+      },
+      editComment: ()=>{
+        dispatch(editComment())
       }
     }
 };
