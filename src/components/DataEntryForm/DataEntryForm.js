@@ -11,6 +11,7 @@ const DataEntryForm = (props) => {
     const [data, setData] = useState({name: '', comment: ''})
     
     const inputChangeHandler = (e) => {
+      console.log(e.target)
       const {name , value} = e.target;
       setData((prevState)=>({
         ...prevState,

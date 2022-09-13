@@ -4,9 +4,9 @@ import EditIcon from '@mui/icons-material/Edit';
 
 const ListItemDetail = (props) => {
     console.log(props)
-    const {commentItem, deleteComment, editComment, editStatus, history, formSubmitHandler, inputChangeHandler} = props
+    const {commentItem, deleteComment, editComment, editStatus, history, editInputHandler, inputChangeHandler, dataDetailComment} = props
+    const {nameDetail, commentDetail} = dataDetailComment;
     console.log(editStatus)
-    console.log(commentItem.length)
     const {comment, date, id, name} = commentItem[0] ? commentItem[0] : 'undefined';
     // console.log(comment, date, id, name)
 
@@ -39,19 +39,27 @@ const ListItemDetail = (props) => {
         </div>)
          : (
             <div className='d-flex'>
-              <div className='commentDetail form-control'>
+            {/* <form className="form-inline" onSubmit={btnHandler}> */}
+             <div className='commentDetail form-control'>
                 <div className='comment_margin'>Имя:
-                  <input className='form-control' type='text' name='name' value={name} placeholder='Введите ваше имя' onChange={inputChangeHandler} />
+                  <input className='form-control' type='text' name='nameDetail' 
+                    value={nameDetail} placeholder='Введите ваше имя' 
+                    onChange={inputChangeHandler} required
+                  />
                 </div>
                 <div className='comment_margin'>Комментарий:
-                  <input className='form-control' type='text' name='comment' value={comment} placeholder='Введите ваш комментарий' onChange={inputChangeHandler} />
+                  <input className='form-control' type='text' name='commentDetail' 
+                    value={commentDetail} placeholder='Введите ваш комментарий' 
+                    onChange={inputChangeHandler} required
+                  />
                 </div> 
               </div> 
-              <button className='btn btn-success edit' onClick={editComment}>Сохранить</button>
+              <button type='button' className='btn btn-success edit' onClick={editInputHandler} >Сохранить</button>
+              {/* </form> */}
             </div>
+          
         )
      }
-     {/* {editStatus && true ? <div>fewfew</div> : false} */}
     </>
   )
 }

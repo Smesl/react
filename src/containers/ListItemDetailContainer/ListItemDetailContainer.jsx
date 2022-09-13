@@ -2,21 +2,21 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import { compose } from 'redux';
 
-import {deleteComment, addComment, editComment} from '../../action/index'
+import {deleteComment, addComment, editComment, btnComment} from '../../action/index'
 import ListItemDetail from '../../components/ListItemDetail/ListItemDetail';
 
 const ListItemDetailContainer = (props) => {
     console.log(props)
-    const {dataComments, editStatus, addComment, deleteComment, history, editComment} = props;
+    const {dataComments, editStatus, addComment, deleteComment, history, editComment , btnComment} = props;
     console.log(dataComments, editStatus)
+    console.log(btnComment)
     const commentId = props.match.params.id;
-    console.log(commentId)
     const commentItem = dataComments.filter(c => c.id === commentId);
-    console.log(commentItem)
 
-    const [data, setData] = useState({name: '', comment: ''})
-    
+    const [data, setData] = useState({nameDetail: '', commentDetail: ''})
+
     const inputChangeHandler = (e) => {
+      console.log(e.target)
       const {name , value} = e.target;
       setData((prevState)=>({
         ...prevState,
@@ -24,22 +24,26 @@ const ListItemDetailContainer = (props) => {
       }))
     }
 
-    const formSubmitHandler = (e) => {
-      e.preventDefault();
-     const {name, comment} = data;
-
-     addComment(name, comment, new Date().toLocaleString());
+    const editInputHandler = () => {
+      // e.preventDefault();
+     const {nameDetail, commentDetail} = data;
+      console.log(nameDetail)
+      addComment(nameDetail, commentDetail, new Date().toLocaleString());
    
-     setData({
-       name: '',
-       comment: ''
+      setData({
+        nameDetail: '',
+        commentDetail: ''
      })
    }
 
-
   return (
     <div className='d-flex justify-content-center'>
-      <ListItemDetail formSubmitHandler={formSubmitHandler} inputChangeHandler={inputChangeHandler} editComment={editComment} editStatus={editStatus.commentEditStatus} commentItem={commentItem} deleteComment={deleteComment} addComment={addComment} history={history} />
+      <ListItemDetail editInputHandler={editInputHandler}
+        inputChangeHandler={inputChangeHandler} 
+        editComment={editComment} editStatus={editStatus.commentEditStatus} 
+        commentItem={commentItem} deleteComment={deleteComment} addComment={addComment} 
+        dataDetailComment={data} history={history} />
+
     </div>
   )
 }
@@ -57,14 +61,15 @@ const mapStateToProps = (state) => {
       deleteComment: (id) => {
             dispatch(deleteComment(id));
         }, 
-      addComment: ()=> {
-        dispatch(addComment())
+      addComment: (name, comment, date)=> {
+        dispatch(addComment(name, comment, date))
       },
       editComment: ()=>{
-        dispatch(editComment())
-      }
+        editComment()
+      },
     }
 };
 
 // export default ListItemDetail
+// export default compose(connect(mapStateToProps, mapDispatchToProps))(ListItemDetailContainer);
 export default compose(connect(mapStateToProps, mapDispatchToProps))(ListItemDetailContainer);

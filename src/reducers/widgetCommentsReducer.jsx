@@ -12,6 +12,16 @@ const widgetCommentsReducer = (state = [],  {id, name, comment, date, type}) => 
                     date
                   },
             ]
+            case 'BTN_COMMENT':
+            return [
+                   ...state,{
+                    id,
+                    name,
+                    comment,
+                    date
+                  },
+            ]
+            
         case DELETE_COMMENT:
           return state.filter(comment => comment.id !== id);  
 
